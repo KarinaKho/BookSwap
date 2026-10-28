@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookSwap — каталог книг</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">BookSwap</div>
+    <nav class="nav">
+      <a href="#">Каталог</a>
+      <a href="#">Мои книги</a>
+      <a href="#">Заявки</a>
+      <a href="#">Профиль</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="search-row">
+      <input type="search" placeholder="Поиск по названию, автору или дисциплине…">
+      <button class="btn">+ Добавить книгу</button>
+    </div>
+
+    <div class="layout">
+      <aside class="filters">
+        <h3>Фильтры</h3>
+        <label><input type="checkbox"> Факультет</label>
+        <label><input type="checkbox"> Курс</label>
+        <label><input type="checkbox"> Дисциплина</label>
+        <label><input type="checkbox"> Состояние книги</label>
+        <label><input type="checkbox"> Только доступные</label>
+      </aside>
+
+      <section class="catalog" id="catalog"></section>
+    </div>
+  </main>
+
+  <script>
+    const books = [
+      { title: "Математический анализ", author: "Фихтенгольц Г. М.", subject: "Матанализ" },
+      { title: "Теория вероятностей", author: "Гмурман В. Е.", subject: "Теория вероятностей" },
+      { title: "Программная инженерия", author: "Турнецкая Е. Л.", subject: "Программная инженерия" },
+      { title: "Базы данных", author: "Кузнецов С. Д.", subject: "Базы данных" }
+    ];
+    const catalog = document.getElementById("catalog");
+    books.forEach(b => {
+      catalog.insertAdjacentHTML("beforeend", `
+        <article class="card">
+          <div class="cover"></div>
+          <h4>${b.title}</h4>
+          <p>${b.author}</p>
+          <span class="tag">${b.subject}</span>
+          <button class="btn-outline">Запросить обмен</button>
+        </article>`);
+    });
+  </script>
+</body>
+</html>
